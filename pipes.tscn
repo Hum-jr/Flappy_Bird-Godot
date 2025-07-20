@@ -1,0 +1,16 @@
+[gd_scene load_steps=4 format=3 uid="uid://cpv75x1twnv1v"]
+
+[ext_resource type="Script" uid="uid://bm85jfcs13s1o" path="res://Pipes.cs" id="1_og227"]
+[ext_resource type="Texture2D" uid="uid://knbc3by3acv" path="res://Flappy_Bird_assets by kosresetr55/Game Objects/pipe-green.png" id="2_l4tgv"]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_nq3k0"]
+size = Vector2(46, 316)
+
+[node name="Pipes" type="StaticBody2D" groups=["pipes"]]
+script = ExtResource("1_og227")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="."]
+shape = SubResource("RectangleShape2D_nq3k0")
+
+[node name="Sprite2D" type="Sprite2D" parent="."]
+texture = ExtResource("2_l4tgv")
