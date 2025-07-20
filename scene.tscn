@@ -1,0 +1,43 @@
+[gd_scene load_steps=8 format=4 uid="uid://b7f8f1opg5qey"]
+
+[ext_resource type="Script" uid="uid://dtuw4fd13ljwk" path="res://GameManager.cs" id="1_u3cyc"]
+[ext_resource type="Texture2D" uid="uid://chukd3llrwivn" path="res://Flappy_Bird_assets by kosresetr55/Game Objects/base.png" id="1_ulcgi"]
+[ext_resource type="PackedScene" uid="uid://bvufs1kcmrid3" path="res://bird.tscn" id="2_nxogm"]
+[ext_resource type="PackedScene" uid="uid://ngq687ju6tuc" path="res://pipe_spawner.tscn" id="3_m7jmp"]
+
+[sub_resource type="TileSetAtlasSource" id="TileSetAtlasSource_nxogm"]
+texture = ExtResource("1_ulcgi")
+texture_region_size = Vector2i(336, 112)
+0:0/0 = 0
+
+[sub_resource type="TileSet" id="TileSet_3253y"]
+tile_size = Vector2i(336, 112)
+sources/0 = SubResource("TileSetAtlasSource_nxogm")
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_u3cyc"]
+size = Vector2(3020.5, 109.5)
+
+[node name="GameManager" type="Node2D"]
+script = ExtResource("1_u3cyc")
+
+[node name="PipeSpawner" parent="." instance=ExtResource("3_m7jmp")]
+
+[node name="Bird" parent="." instance=ExtResource("2_nxogm")]
+position = Vector2(574, 323)
+
+[node name="Parallax2D" type="Parallax2D" parent="."]
+
+[node name="ParallaxBackground" type="ParallaxBackground" parent="Parallax2D"]
+
+[node name="ParallaxLayer" type="ParallaxLayer" parent="Parallax2D/ParallaxBackground"]
+
+[node name="StaticBody2D" type="StaticBody2D" parent="."]
+
+[node name="TileMapLayer" type="TileMapLayer" parent="StaticBody2D"]
+tile_map_data = PackedByteArray("AAABAAUAAAAAAAAAAAACAAUAAAAAAAAAAAADAAUAAAAAAAAAAAAEAAUAAAAAAAAAAAAFAAUAAAAAAAAAAAAAAAUAAAAAAAAAAAAGAAUAAAAAAAAAAAAHAAUAAAAAAAAAAAD//wUAAAAAAAAAAAA=")
+tile_set = SubResource("TileSet_3253y")
+collision_visibility_mode = 1
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="StaticBody2D"]
+position = Vector2(1175.75, 618.25)
+shape = SubResource("RectangleShape2D_u3cyc")
